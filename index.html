@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shree Brahma Ji Adarsh HP School</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin: 0 1.5rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        
+        nav a:hover {
+            color: #ffd700;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .logo {
+            width: 100px;
+            height: 100px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #667eea;
+            font-size: 2.5rem;
+        }
+        
+        .school-title h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .school-title p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        section {
+            margin: 3rem 0;
+            display: none;
+        }
+        
+        section.active {
+            display: block;
+        }
+        
+        .intro-box {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+            margin-bottom: 2rem;
+        }
+        
+        .key-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.2);
+        }
+        
+        .feature-card h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .gallery-item {
+            background: #f0f0f0;
+            height: 200px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 1rem;
+            overflow: hidden;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        
+        /* Founder Section */
+        .founder-section {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+        
+        .founder-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .founder-image {
+            text-align: center;
+        }
+        
+        .founder-image img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .founder-info h3 {
+            color: #667eea;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .founder-info .title {
+            color: #764ba2;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .founder-info p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            color: #333;
+        }
+        
+        .contact-badge {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            border-left: 4px solid #667eea;
+        }
+        
+        .contact-badge p {
+            margin: 0.5rem 0;
+            font-weight: 600;
+        }
+        
+        /* Slideshow */
+        .slideshow {
+            max-width: 600px;
+            margin: 2rem auto;
+            background: #f0f0f0;
+            height: 400px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+        }
+        
+        /* Form */
+        form {
+            max-width: 600px;
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+        }
+        
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        button:hover {
+            opacity: 0.9;
+        }
+        
+        /* Contact Info */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .contact-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .contact-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: white;
+        }
+        
+        .info-table th, .info-table td {
+            border: 1px solid #ddd;
+            padding: 0.8rem;
+            text-align: left;
+        }
+        
+        .info-table th {
+            background: #667eea;
+            color: white;
+        }
+        
+        h2 {
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            border-bottom: 3px solid #764ba2;
+            padding-bottom: 0.5rem;
+        }
+        
+        h3 {
+            color: #764ba2;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            .school-title h1 {
+                font-size: 1.8rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 0.5rem 0;
+            }
+            
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+            
+            .founder-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#" onclick="showSection('home')">🏠 Home</a></li>
+            <li><a href="#" onclick="showSection('about')">ℹ️ About Us</a></li>
+            <li><a href="#" onclick="showSection('academics')">📚 Academics</a></li>
+            <li><a href="#" onclick="showSection('admission')">📝 Admission</a></li>
+            <li><a href="#" onclick="showSection('news')">📰 News & Events</a></li>
+            <li><a href="#" onclick="showSection('contact')">📞 Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">शाला</div>
+            <div class="school-title">
+                <h1>Shree Brahma Ji Adarsh HP School</h1>
+                <p>Quality Education at Affordable Cost</p>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">📍 Muhammada Barwapatti Motichak, Kushinagar</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- HOME SECTION -->
+        <section id="home" class="active">
+            <div class="intro-box">
+                <h2>Welcome to Shree Brahma Ji Adarsh HP School</h2>
+                <p>
+                    Our school was established with a vision to provide quality education to all students at an affordable cost. 
+                    Founded by <strong>Shree Gautam Muni Tiwari</strong>, a renowned journalist and educationist, we are committed to 
+                    nurturing young minds with excellence and integrity.
+                </p>
+            </div>
+
+            <h3>🌟 Key Features</h3>
+            <div class="key-features">
+                <div class="feature-card">
+                    <h3>✓ Approved by Government</h3>
+                    <p>Recognized by Uttar Pradesh Government since 2008-09. UDISE Code: 09590703204</p>
+                </div>
+                <div class="feature-card">
+                    <h3>✓ Classes Nursery to 6</h3>
+                    <p>Comprehensive curriculum covering all subjects with focus on holistic development</p>
+                </div>
+                <div class="feature-card">
+                    <h3>✓ Affordable Education</h3>
+                    <p>Quality education without compromising on standards, accessible to all</p>
+                </div>
+                <div class="feature-card">
+                    <h3>✓ Experienced Staff</h3>
+                    <p>Dedicated teachers trained in modern teaching methodologies</p>
+                </div>
+                <div class="feature-card">
+                    <h3>✓ Cultural Activities</h3>
+                    <p>Regular programs to develop personality and cultural awareness</p>
+                </div>
+                <div class="feature-card">
+                    <h3>✓ Safe Environment</h3>
+                    <p>Child-friendly campus with modern facilities and security</p>
+                </div>
+            </div>
+
+            <h3>📷 School Gallery</h3>
+            <p style="text-align: center; margin: 1rem 0;">Explore our school activities and events</p>
+            <div class="gallery" id="photoGallery">
+                <!-- Photos will be displayed here -->
+                <div class="gallery-item">📸 Click to view school photos</div>
+            </div>
+        </section>
+
+        <!-- ABOUT US SECTION -->
+        <section id="about">
+            <h2>About Us</h2>
+
+            <!-- Founder Section -->
+            <div class="founder-section">
+                <div class="founder-container">
+                    <div class="founder-image">
+                        <img src="https://raw.githubusercontent.com/ankit05d-spec/shreebramhjischool/school-website/founder-gautam-muni-tiwari.jpg" alt="Shree Gautam Muni Tiwari - Founder">
+                    </div>
+                    <div class="founder-info">
+                        <h3>Shree Gautam Muni Tiwari</h3>
+                        <div class="title">Founder & Visionary Leader</div>
+                        <p>
+                            Shree Gautam Muni Tiwari is a senior urban journalist with an extensive background in media and education. 
+                            His passion for transforming education and empowering students from underprivileged backgrounds led to the 
+                            establishment of Shree Brahma Ji Adarsh HP School.
+                        </p>
+                        <p>
+                            With a deep commitment to social responsibility, he believes that quality education should be accessible to all, 
+                            regardless of economic status. His visionary approach has made the school a beacon of hope for hundreds of students 
+                            in the community.
+                        </p>
+                        <p>
+                            As a farmer and journalist, Shree Gautam Muni Tiwari combines practical wisdom with progressive thinking, 
+                            creating an educational institution that values both tradition and innovation.
+                        </p>
+                        <div class="contact-badge">
+                            <p>📞 Contact:</p>
+                            <p><strong>+91-94502-31827</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div>
+                    <h3>📖 School History</h3>
+                    <p>
+                        Shree Brahma Ji Adarsh HP School was established with the aim of providing accessible, quality education 
+                        to underprivileged students. Since its inception in 2008-09, the school has been serving the community with dedication 
+                        and commitment to educational excellence.
+                    </p>
+                </div>
+                <div>
+                    <h3>🎯 Our Vision</h3>
+                    <p>
+                        To be a leading educational institution that transforms lives through quality education, cultural values, 
+                        and holistic development, creating responsible citizens who contribute positively to society.
+                    </p>
+                </div>
+            </div>
+
+            <h3>📋 Core Principles</h3>
+            <ul style="margin-left: 2rem; line-height: 2;">
+                <li>Excellence in Education</li>
+                <li>Affordability and Accessibility</li>
+                <li>Integrity and Honesty</li>
+                <li>Holistic Development</li>
+                <li>Respect for Diversity</li>
+                <li>Commitment to Community Service</li>
+            </ul>
+
+            <h3>👥 School Leadership</h3>
+            <table class="info-table">
+                <tr>
+                    <th>Position</th>
+                    <th>Name</th>
+                    <th>Contact</th>
+                </tr>
+                <tr>
+                    <td>Founder & Vision Leader</td>
+                    <td>Shree Gautam Muni Tiwari</td>
+                    <td>+91-94502-31827</td>
+                </tr>
+                <tr>
+                    <td>Principal</td>
+                    <td>Shree Vijendra Kumar Tiwari</td>
+                    <td>+91-99841-35693</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- ACADEMICS SECTION -->
+        <section id="academics">
+            <h2>Classes & Academics</h2>
+
+            <h3>📚 Classes Offered</h3>
+            <table class="info-table">
+                <tr>
+                    <th>Class</th>
+                    <th>Age Group</th>
+                </tr>
+                <tr>
+                    <td>Nursery</td>
+                    <td>3-4 years</td>
+                </tr>
+                <tr>
+                    <td>KG</td>
+                    <td>4-5 years</td>
+                </tr>
+                <tr>
+                    <td>Class 1</td>
+                    <td>5-6 years</td>
+                </tr>
+                <tr>
+                    <td>Class 2</td>
+                    <td>6-7 years</td>
+                </tr>
+                <tr>
+                    <td>Class 3</td>
+                    <td>7-8 years</td>
+                </tr>
+                <tr>
+                    <td>Class 4</td>
+                    <td>8-9 years</td>
+                </tr>
+                <tr>
+                    <td>Class 5</td>
+                    <td>9-10 years</td>
+                </tr>
+                <tr>
+                    <td>Class 6</td>
+                    <td>10-11 years</td>
+                </tr>
+            </table>
+
+            <h3>📖 Curriculum & Subjects</h3>
+            <div class="two-column">
+                <div>
+                    <h4>Primary Subjects (Classes 1-6)</h4>
+                    <ul style="margin-left: 2rem; line-height: 2;">
+                        <li>English</li>
+                        <li>Hindi</li>
+                        <li>Mathematics</li>
+                        <li>Science</li>
+                        <li>Social Studies</li>
+                        <li>Urdu/Marathi (Optional)</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Co-Curricular Activities</h4>
+                    <ul style="margin-left: 2rem; line-height: 2;">
+                        <li>Physical Education</li>
+                        <li>Art & Craft</li>
+                        <li>Music</li>
+                        <li>Dance</li>
+                        <li>Computer Skills</li>
+                        <li>Cultural Programs</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>⏰ Time Table</h3>
+            <table class="info-table">
+                <tr>
+                    <th>Period</th>
+                    <th>Nursery-KG</th>
+                    <th>Class 1-3</th>
+                    <th>Class 4-6</th>
+                </tr>
+                <tr>
+                    <td>Assembly</td>
+                    <td>9:00 AM</td>
+                    <td>9:00 AM</td>
+                    <td>9:00 AM</td>
+                </tr>
+                <tr>
+                    <td>Period 1-2</td>
+                    <td>9:15-10:30</td>
+                    <td>9:15-10:45</td>
+                    <td>9:15-11:00</td>
+                </tr>
+                <tr>
+                    <td>Tea Break</td>
+                    <td>10:30</td>
+                    <td>10:45</td>
+                    <td>11:00</td>
+                </tr>
+                <tr>
+                    <td>Period 3-4</td>
+                    <td>10:45-12:00</td>
+                    <td>11:00-12:30</td>
+                    <td>11:15-1:00 PM</td>
+                </tr>
+                <tr>
+                    <td>Lunch</td>
+                    <td>12:00</td>
+                    <td>12:30</td>
+                    <td>1:00 PM</td>
+                </tr>
+                <tr>
+                    <td>School Closes</td>
+                    <td>1:00 PM</td>
+                    <td>1:30 PM</td>
+                    <td>1:30 PM</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- ADMISSION SECTION -->
+        <section id="admission">
+            <h2>Admission</h2>
+
+            <h3>📝 Online Admission Form</h3>
+            <form onsubmit="handleAdmissionSubmit(event)">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label>Student First Name *</label>
+                        <input type="text" name="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Student Last Name *</label>
+                        <input type="text" name="lastName" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Date of Birth *</label>
+                    <input type="date" name="dob" required>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label>Height (cm)</label>
+                        <input type="number" name="height" placeholder="e.g., 120">
+                    </div>
+                    <div class="form-group">
+                        <label>Weight (kg)</label>
+                        <input type="number" name="weight" placeholder="e.g., 25">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Blood Group</label>
+                    <select name="bloodGroup">
+                        <option value="">Select Blood Group</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Aadhar Number (Optional)</label>
+                    <input type="text" name="aadhar" placeholder="12-digit Aadhar number">
+                </div>
+
+                <div class="form-group">
+                    <label>Complete Address *</label>
+                    <textarea name="address" rows="3" placeholder="House No., Street, City, District, State, Pincode" required></textarea>
+                </div>
+
+                <h3>👨‍👩‍👧 Parents Information</h3>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label>Father's Full Name *</label>
+                        <input type="text" name="fatherName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Mother's Full Name *</label>
+                        <input type="text" name="motherName" required>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label>Father's Contact Number *</label>
+                        <input type="tel" name="fatherPhone" pattern="[0-9]{10}" placeholder="10-digit number" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Alternate Contact Number</label>
+                        <input type="tel" name="alternatePhone" pattern="[0-9]{10}" placeholder="10-digit number">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Student Photo/Image</label>
+                    <input type="file" name="photo" accept="image/*">
+                    <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">Accepted formats: JPG, PNG (Max 5MB)</p>
+                </div>
+
+                <div class="form-group">
+                    <label>Class Applying For *</label>
+                    <select name="classApplying" required>
+                        <option value="">Select Class</option>
+                        <option value="Nursery">Nursery</option>
+                        <option value="KG">KG</option>
+                        <option value="Class 1">Class 1</option>
+                        <option value="Class 2">Class 2</option>
+                        <option value="Class 3">Class 3</option>
+                        <option value="Class 4">Class 4</option>
+                        <option value="Class 5">Class 5</option>
+                        <option value="Class 6">Class 6</option>
+                    </select>
+                </div>
+
+                <button type="submit">📤 Submit Admission Form</button>
+            </form>
+
+            <h3 style="margin-top: 3rem;">💰 Fee Structure</h3>
+            <table class="info-table">
+                <tr>
+                    <th>Class</th>
+                    <th>Monthly Fee</th>
+                    <th>Annual Charges</th>
+                </tr>
+                <tr>
+                    <td>Nursery - KG</td>
+                    <td>[Add Amount]</td>
+                    <td>[Add Amount]</td>
+                </tr>
+                <tr>
+                    <td>Class 1-3</td>
+                    <td>[Add Amount]</td>
+                    <td>[Add Amount]</td>
+                </tr>
+                <tr>
+                    <td>Class 4-6</td>
+                    <td>[Add Amount]</td>
+                    <td>[Add Amount]</td>
+                </tr>
+            </table>
+
+            <h3>📋 Admission Process & Requirements</h3>
+            <ol style="margin-left: 2rem; line-height: 2;">
+                <li>Fill the online admission form completely</li>
+                <li>Submit recent passport-size photograph (4x6 cm)</li>
+                <li>Provide birth certificate or Aadhar proof</li>
+                <li>Parents meet with Principal for interview</li>
+                <li>School may conduct basic assessment</li>
+                <li>Confirmation of admission with fee payment</li>
+                <li>Student ID card will be generated from submitted data</li>
+            </ol>
+        </section>
+
+        <!-- NEWS & EVENTS SECTION -->
+        <section id="news">
+            <h2>News & Events</h2>
+
+            <h3>📰 Latest News</h3>
+            <div class="feature-card">
+                <h4>🎉 Annual Events & Activities</h4>
+                <p>Our school regularly organizes various events to celebrate cultural heritage and foster student development.</p>
+            </div>
+
+            <div class="feature-card">
+                <h4>🏆 Student Achievements</h4>
+                <p>Students participate actively in rangoli competitions, sports events, and cultural programs throughout the year.</p>
+            </div>
+
+            <h3>📅 Upcoming Events</h3>
+            <div class="feature-card">
+                <h4>🇮🇳 Independence Day Celebration</h4>
+                <p>Annual celebration of India's independence with flag hoisting, patriotic songs, and cultural performances.</p>
+            </div>
+
+            <div class="feature-card">
+                <h4>🇮🇳 Republic Day Celebration</h4>
+                <p>Celebration of India's Constitution with student participation, flag ceremony, and civic awareness programs.</p>
+            </div>
+
+            <h3>🎨 Cultural Activities</h3>
+            <div class="gallery">
+                <div class="gallery-item">🎭 Theater Productions</div>
+                <div class="gallery-item">🎵 Music Performances</div>
+                <div class="gallery-item">💃 Dance Programs</div>
+                <div class="gallery-item">🎨 Rangoli Art</div>
+                <div class="gallery-item">📚 Book Fairs</div>
+                <div class="gallery-item">🏃 Sports Events</div>
+            </div>
+
+            <h3>🏅 School Achievements</h3>
+            <ul style="margin-left: 2rem; line-height: 2; font-size: 1.05rem;">
+                <li>✅ Recognized by UP Government since 2008-09</li>
+                <li>✅ UDISE Code: 09590703204</li>
+                <li>✅ Active participation in cultural activities</li>
+                <li>✅ Regular rangoli and art competitions</li>
+                <li>✅ Strong community engagement</li>
+                <li>✅ Holistic student development</li>
+            </ul>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact">
+            <h2>Contact Us</h2>
+
+            <h3>📍 School Address</h3>
+            <div class="contact-card">
+                <h3>Shree Brahma Ji Adarsh HP School</h3>
+                <p>Muhammada Barwapatti<br>Motichak, Kushinagar<br>Uttar Pradesh, India</p>
+            </div>
+
+            <h3>📞 Contact Information</h3>
+            <div class="contact-info">
+                <div class="contact-card">
+                    <h3>👨 Founder</h3>
+                    <p><strong>Shree Gautam Muni Tiwari</strong></p>
+                    <p>Phone: +91-94502-31827</p>
+                </div>
+                <div class="contact-card">
+                    <h3>🎓 Principal</h3>
+                    <p><strong>Shree Vijendra Kumar Tiwari</strong></p>
+                    <p>Phone: +91-99841-35693</p>
+                </div>
+            </div>
+
+            <h3>ℹ️ Important Details</h3>
+            <table class="info-table">
+                <tr>
+                    <th>Information</th>
+                    <th>Details</th>
+                </tr>
+                <tr>
+                    <td>School Recognized By</td>
+                    <td>Uttar Pradesh Government</td>
+                </tr>
+                <tr>
+                    <td>Year of Establishment</td>
+                    <td>2008-09</td>
+                </tr>
+                <tr>
+                    <td>UDISE Code</td>
+                    <td>09590703204</td>
+                </tr>
+                <tr>
+                    <td>Classes</td>
+                    <td>Nursery to Class 6</td>
+                </tr>
+                <tr>
+                    <td>School Timings</td>
+                    <td>9:00 AM - 1:30 PM (Class 4-6)<br>9:00 AM - 1:00 PM (Nursery-KG)</td>
+                </tr>
+            </table>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Shree Brahma Ji Adarsh HP School. All rights reserved.</p>
+        <p>Committed to Quality Education • Since 2008-09</p>
+        <p style="font-size: 0.9rem; margin-top: 1rem;">UDISE Code: 09590703204 | Government Recognized | Nursery to Class 6</p>
+    </footer>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => section.classList.remove('active'));
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        function handleAdmissionSubmit(event) {
+            event.preventDefault();
+            alert('✅ Admission form submitted successfully!\n\nWe will contact you shortly at the provided phone number.\n\nPlease visit the school with:\n- Birth Certificate/Aadhar\n- Recent Photographs\n- Address Proof');
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>
